@@ -3,37 +3,339 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+    <title>Chess Analyzer</title>
+    <style>
+        :root {
+            --primary: #1e293b;
+            --secondary: #3b82f6;
+            --accent: #10b981;
+            --light: #f8fafc;
+            --dark: #0f172a;
+            --card-bg: rgba(30, 41, 59, 0.8);
+            --input-bg: rgba(15, 23, 42, 0.5);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: var(--light);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        header {
+            background: var(--dark);
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            text-align: center;
+            background: linear-gradient(135deg, #10b981, #3b82f6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 1px;
+        }
+        
+        .main-container {
+            flex: 1;
+            display: flex;
+            padding: 40px 20px;
+        }
+        
+        .content {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+        
+        @media (min-width: 768px) {
+            .content {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        
+        .chess-advice {
+            background: var(--card-bg);
+            padding: 25px;
+            border-left: 4px solid var(--accent);
+            border-radius: 12px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease;
+        }
+        
+        .chess-advice:hover {
+            transform: translateY(-5px);
+        }
+        
+        .chess-advice h3 {
+            color: var(--accent);
+            margin-bottom: 15px;
+            font-size: 22px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .chess-advice h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--accent);
+        }
+        
+        .chess-advice p {
+            font-size: 18px;
+            line-height: 1.6;
+        }
+        
+        .refresh-btn {
+            margin-top: 20px;
+            background: transparent;
+            border: none;
+            color: var(--accent);
+            font-size: 16px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            transition: color 0.3s;
+            margin-left: auto;
+        }
+        
+        .refresh-btn:hover {
+            color: var(--secondary);
+        }
+        
+        .refresh-btn svg {
+            margin-right: 5px;
+        }
+        
+        .analyzer {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease;
+        }
+        
+        .analyzer:hover {
+            transform: translateY(-5px);
+        }
+        
+        .analyzer h2 {
+            font-size: 28px;
+            margin-bottom: 25px;
+            text-align: center;
+            color: var(--light);
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .analyzer h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent), var(--secondary));
+        }
+        
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        form label {
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+        
+        form textarea {
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid rgba(248, 250, 252, 0.1);
+            background-color: var(--input-bg);
+            color: var(--light);
+            font-size: 16px;
+            margin-bottom: 20px;
+            resize: vertical;
+            min-height: 180px;
+            transition: border-color 0.3s;
+        }
+        
+        form textarea:focus {
+            outline: none;
+            border-color: var(--secondary);
+        }
+        
+        .checkbox-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+        
+        .checkbox-container input {
+            margin-right: 10px;
+            accent-color: var(--accent);
+        }
+        
+        button[type="submit"] {
+            padding: 14px 30px;
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            align-self: center;
+            box-shadow: 0 5px 15px rgba(16, 185, 129, 0.3);
+        }
+        
+        button[type="submit"]:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(59, 130, 246, 0.4);
+        }
+
+        footer {
+            background: var(--dark);
+            text-align: center;
+            padding: 20px;
+            margin-top: auto;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .footer-links {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .footer-links a {
+            color: var(--light);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+        
+        @media (max-width: 600px) {
+            .footer-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .footer-links {
+                margin-top: 10px;
+            }
+        }
+    </style>
 </head>
 
 <body>
+    <header>
+        <div class="logo">Chess Analyzer</div>
+    </header>
 
-    <div class="content">
+    <div class="main-container">
+        <div class="content">
+            <div class="chess-advice">
+                <h3>Chess Tip of the Day</h3>
+                <p id="advice-text">Loading chess advice...</p>
+                <button class="refresh-btn" id="refresh-btn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"></path>
+                        <path d="M21 3v5h-5"></path>
+                        <path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"></path>
+                        <path d="M3 21v-5h5"></path>
+                    </svg>
+                    New Tip
+                </button>
+            </div>
 
-        <div class="input">
-            <h1> ♟️OpenChess: Insights</h1>
-                <p>Enter PGN:</p>
+            <div class="analyzer">
+                <h2>Analyze Your Game</h2>
                 <form action="/views/analysis" method="post">
-                    <textarea name="pgn" rows="10" cols="50" required></textarea>
-                    <br>
-                    <label for="roastmode">Roast mode: </label>
-                    <input name="roastmode" type="checkbox">
-                    <br>
-                    <br>
-                    <input type="submit" value="Submit">
-                <br>
+                    <label for="pgn">Enter PGN Notation:</label>
+                    <textarea id="pgn" name="pgn" required placeholder="Paste your chess game in PGN format here..."></textarea>
+                    
+                    <div class="checkbox-container">
+                        <input id="roastmode" name="roastmode" type="checkbox">
+                        <label for="roastmode">Enable Roast Mode (get brutally honest feedback)</label>
+                    </div>
+                    
+                    <button type="submit">Analyze Game</button>
                 </form>
+            </div>
         </div>
-
     </div>
     
     <footer>
-        
+        <div class="footer-content">
+            
+           
+        </div>
     </footer>
 
+    <script>
+        // Chess advice array
+        const chessAdvice = [
+            "Control the center! The central squares (d4, d5, e4, e5) are crucial for piece mobility and control.",
+            "Don't move the same piece twice in the opening unless absolutely necessary.",
+            "Castle early to protect your king and connect your rooks.",
+            "Knights before bishops in most openings — develop your knights first to control the center.",
+            "Always look for checks, captures, and threats before making your move.",
+            "In the endgame, activate your king — it becomes a powerful piece when few pieces remain.",
+            "Doubled pawns are usually a weakness, especially in the endgame.",
+            "A knight on the rim is dim! Knights are most effective when centralized.",
+            "Rooks belong on open files where they can control the maximum number of squares.",
+            "When ahead in material, exchange pieces but not pawns.",
+            "When behind in material, exchange pawns but not pieces.",
+            "Don't bring your queen out too early — it can become a target for development with tempo."
+        ];
 
-    
-    
+        // Function to set random chess advice
+        function setRandomAdvice() {
+            const adviceText = document.getElementById('advice-text');
+            const randomIndex = Math.floor(Math.random() * chessAdvice.length);
+            adviceText.textContent = chessAdvice[randomIndex];
+        }
+
+        // Set random advice when page loads
+        window.onload = function() {
+            setRandomAdvice();
+            
+            // Add event listener for refresh button
+            document.getElementById('refresh-btn').addEventListener('click', setRandomAdvice);
+        };
+    </script>
 </body>
 </html>

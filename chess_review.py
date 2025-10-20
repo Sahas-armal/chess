@@ -8,7 +8,7 @@ import numpy as np
 import io
 from tqdm import tqdm
 import os
-from collections import Counter # for calculating captured pieces
+from collections import Counter 
 import math
 
 stockfish_path = "stockfish-windows-x86-64-avx2.exe"

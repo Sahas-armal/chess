@@ -1,126 +1,165 @@
 body {
-    background-color: #1b1b1b;
-    margin: 0px;
-    padding: 0px;
-    color: rgb(255, 255, 255);
-    align-items: center;
-    font-family: 'Microsoft JhengHei UI Light';
+    background-color: #1a1a1a;
+    margin: 0;
+    padding: 0;
+    color: #e0e0e0;
+    font-family: 'Georgia', 'Times New Roman', serif;
     display: flex;
     height: 100vh;
+    overflow: hidden;
+    background-image: linear-gradient(to bottom, rgba(30, 30, 30, 0.9), rgba(15, 15, 15, 0.95)),
+                      url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="50" height="50" fill="%23252525"/><rect x="50" y="50" width="50" height="50" fill="%23252525"/></svg>');
+    background-size: cover, 20px 20px;
 }
 
-/* width */
+/* Elegant scrollbar */
 ::-webkit-scrollbar {
-    width: 15px;
+    width: 8px;
 }
   
-/* Track */
 ::-webkit-scrollbar-track {
-    background: #000000; 
+    background: #222222; 
+    border-radius: 4px;
 }
    
-/* Handle */
 ::-webkit-scrollbar-thumb {
-    background: #333333; 
+    background: #444444; 
+    border-radius: 4px;
+    transition: background 0.2s ease;
+    border: 1px solid #555555;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555555;
 }
 
 h1 {
-    font-size: 60px;
-    font-family: "Microsoft JhengHei UI Light";
+    font-size: 38px;
+    font-family: 'Georgia', 'Times New Roman', serif;
     text-align: center;
-    font-weight: lighter;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    margin: 16px 0;
+    color: #d4d4d4;
 }
 
 p {
     font-size: 16px;
-    font-family: "Microsoft JhengHei UI Light";
+    font-family: 'Georgia', 'Times New Roman', serif;
+    margin: 8px 0;
+    line-height: 1.6;
 }
 
+/* Classic styled sidebar with wood-like textures */
 .sidebar-left {
-    border: none;
-    background-color: #232323;
-    margin: 2%;
+    border: 1px solid rgba(120, 90, 60, 0.3);
+    background-color: rgba(35, 28, 21, 0.95);
+    background-image: linear-gradient(to bottom, rgba(60, 45, 30, 0.6), rgba(35, 25, 15, 0.8));
+    margin: 1.5%;
     width: 25%;
-    min-height: 95%;
-    max-height: 95%;
-    font-family: "Microsoft JhengHei UI Light";
-    overflow-y: scroll;
+    min-height: 97%;
+    max-height: 97%;
+    font-family: 'Georgia', 'Times New Roman', serif;
+    overflow-y: auto;
+    border-radius: 6px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
+    transition: all 0.3s ease;
 }
 
 .review-container {
-    margin: 5%;
-    margin-left: 7%;
-    margin-right: 7%;
-    height: 40%;
+    margin: 6%;
+    position: relative;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(200, 180, 150, 0.2);
 }
 
 .review-container h1 {
-    color: rgb(108, 180, 0);
-    font-size: 35px;
+    color: #b8994a;
+    font-size: 28px;
+    margin-bottom: 12px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 .clf-text {
-    color: #6cb400;
-    font-size: 35px;
+    color: #b8994a;
+    font-size: 28px;
+    font-weight: 500;
+    margin: 0;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 .best-move-text {
-    color: #6cb400;
-    font-size: 35px;
+    color: #b8994a;
+    font-size: 28px;
+    font-weight: 500;
+    margin: 0;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 .review-container p {
     font-size: 16px;
+    color: #c9c9c9;
+    line-height: 1.6;
 }
 
 .metrics-wrapper {
-    position: fixed;
+    position: relative;
 }
 
 .metrics-container {
-    margin-top: 20px;
-    margin-bottom: 5%;
-    margin-left: 7%;
-    margin-right: 7%;
-    height: 60%;
-    padding-top: 5%;
+    margin: 8%;
+    margin-top: 24px;
+    padding-top: 4%;
 }
 
 .metrics-container p {
     font-size: 15px;
-    margin: 0px;
+    margin: 0 0 8px 0;
+    color: #c0b090;
 }
 
+/* Classic metric bars with subtle gradient */
 .metric-bar-container {
     width: 100%;
-    height: 20px; /* Adjust the height based on your preference */
-    background-color: #000000;
+    height: 10px;
+    background-color: rgba(50, 40, 30, 0.5);
     padding: 0px;
-    margin-bottom: 5%;
-    margin-top: 5%;
+    margin-bottom: 22px;
+    margin-top: 8px;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(80, 70, 60, 0.5);
 }
 
 .metric-bar {
     width: 50%;
-    height: 20px; /* Adjust the height based on your preference */
+    height: 10px;
     padding: 0px;
     margin: 0px;
-    background-color: #ffffff;
-    transition: width 0.3s ease;
+    background: linear-gradient(90deg, #a88038, #d4aa54);
+    transition: width 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+    border-radius: 4px;
 }
 
+/* Right sidebar with classic styling */
 .sidebar-right {
-    background-color: #232323;
+    background-color: rgba(35, 28, 21, 0.95);
+    background-image: linear-gradient(to bottom, rgba(60, 45, 30, 0.6), rgba(35, 25, 15, 0.8));
+    border: 1px solid rgba(120, 90, 60, 0.3);
     box-sizing: border-box;
-    margin: 2%;
+    margin: 1.5%;
     padding: 0px;
     width: 25%;
-    height: 95%;
-    font-family: 'Microsoft JhengHei UI Light';
+    height: 97%;
+    font-family: 'Georgia', 'Times New Roman', serif;
+    border-radius: 6px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
+    overflow: hidden;
 } 
 
 .sidebar-right-header {
-    background-color: #232323;
+    background-color: rgba(30, 25, 20, 0.8);
     box-sizing: border-box;
     width: 100%;
     margin: 0px;
@@ -129,28 +168,32 @@ p {
     justify-content: center;
     align-items: center;
     padding: 0px;
-    border-bottom: 1px solid #555555
+    border-bottom: 1px solid rgba(120, 100, 80, 0.4);
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
 } 
 
 .sidebar-right-header p {
-    font-size: 20px;
+    font-size: 35px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    color: #d0c0a0;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 } 
-
-.sidebar-right-header p {
-    text-align: center;
-}
 
 .sidebar-right-moves {
-    background-color: #232323;
+    background-color: transparent;
     box-sizing: border-box;
     width: 100%;
     height: 83%;
     margin: 0px;
-    overflow-y: scroll;
+    overflow-y: auto;
+    text-align: center;
 } 
 
+/* Classic footer controls */
 .sidebar-right-footer {
-    background-color: #232323;
+    background-color: rgba(30, 25, 20, 0.8);
     box-sizing: border-box;
     width: 100%;
     margin: 0px;
@@ -158,17 +201,17 @@ p {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 0px;
-    border-top: 1px solid #555555;
+    padding: 0;
+    border-top: 1px solid rgba(120, 100, 80, 0.4);
     gap: 20px;
-    padding-top: 5px;
-    padding-bottom: 5px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
 }
 
-
+/* Elegant accuracy displays with paper-like texture */
 .accuracyelo-container {
     display: flex;
-    height: 10%;
+    height: 12%;
     justify-content: center;
     align-items: center;
     margin: 0px;
@@ -178,133 +221,181 @@ p {
 .accuracyelo-white-cont {
     text-align: center;
     align-items: center;
-    padding: 5px;
+    padding: 12px 8px;
     height: 100%;
-    width: 30%;
-    border-radius: 10px;
-    background-color: white;
+    width: 32%;
+    border-radius: 6px;
+    background: linear-gradient(145deg, #f5f3e8, #e8e3d0);
     margin-right: 5%;
     color: black;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.7);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border: 1px solid rgba(180, 160, 140, 0.5);
+}
+
+.accuracyelo-white-cont:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25), inset 0 1px 1px rgba(255, 255, 255, 0.7);
 }
 
 .accuracyelo-white-cont h2 {
-    font-family: 'Microsoft JhengHei UI Light';
-    color: black;
-    font-size: 30px;
+    font-family: 'Georgia', 'Times New Roman', serif;
+    color: #333333;
+    font-size: 26px;
     padding: 0px;
-    margin: 0px;
+    margin: 0 0 3px 0;
+    font-weight: 600;
 }
 
 .accuracyelo-white-cont p {
-    font-family: 'Microsoft JhengHei UI Light';
-    color: black;
+    font-family: 'Georgia', 'Times New Roman', serif;
+    color: #666666;
     font-size: 12px;
     padding: 0px;
     margin: 0px;
+    font-weight: 500;
 }
 
 .accuracyelo-black-cont {
     text-align: center;
     align-items: center;
-    padding: 5px;
+    padding: 12px 8px;
     height: 100%;
-    width: 30%;
-    border-radius: 10px;
-    background-color: black;
+    width: 32%;
+    border-radius: 6px;
+    background: linear-gradient(145deg, #333333, #222222);
     margin-left: 5%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), inset 0 1px 1px rgba(90, 90, 90, 0.5);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border: 1px solid rgba(60, 60, 60, 0.7);
+}
+
+.accuracyelo-black-cont:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.35), inset 0 1px 1px rgba(90, 90, 90, 0.5);
 }
 
 .accuracyelo-black-cont p {
-    font-family: 'Microsoft JhengHei UI Light';
-    color: rgb(255, 255, 255);
+    font-family: 'Georgia', 'Times New Roman', serif;
+    color: #bbbbbb;
     font-size: 12px;
     padding: 0px;
     margin: 0px;
+    font-weight: 500;
 }
 
 .accuracyelo-black-cont h2 {
-    font-family: 'Microsoft JhengHei UI Light';
-    color: rgb(255, 255, 255);
-    font-size: 30px;
+    font-family: 'Georgia', 'Times New Roman', serif;
+    color: #ffffff;
+    font-size: 26px;
     padding: 0px;
-    margin: 0px;
+    margin: 0 0 3px 0;
+    font-weight: 600;
 }
 
+/* Move counts with vintage styling */
 .summary-move-counts {
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin: 26px 7%;
     font-size: 14px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
 }
 
 .move-count {
     position: relative;
     text-align: center;
+    padding: 10px 5px;
+    border-radius: 5px;
+    background-color: rgba(40, 30, 20, 0.7);
+    transition: transform 0.2s ease, background-color 0.2s ease;
+    border: 1px solid rgba(100, 80, 60, 0.3);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.move-count:hover {
+    transform: translateY(-2px);
+    background-color: rgba(50, 40, 30, 0.8);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 #move-count-brilliant-text {
-    font-family: 'Microsoft JhengHei UI Light';
-    color: #2681ff;
+    font-family: 'Georgia', 'Times New Roman', serif;
+    color: #4a9bff;
     font-size: 14px;
     padding: 5px;
     margin: 0px;
+    font-weight: 600;
+    text-shadow: 0 0 5px rgba(74, 155, 255, 0.3);
 }
 
 #move-count-book-text {
-    font-family: 'Microsoft JhengHei UI Light';
-    color: gray;
+    font-family: 'Georgia', 'Times New Roman', serif;
+    color: #c0c0c0;
     font-size: 14px;
     padding: 5px;
     margin: 0px;
+    font-weight: 600;
 }
 
 #move-count-best-text {
-    font-family: 'Microsoft JhengHei UI Light';
-    color: #6cb400;
+    font-family: 'Georgia', 'Times New Roman', serif;
+    color: #b8994a;
     font-size: 14px;
     padding: 5px;
     margin: 0px;
+    font-weight: 600;
+    text-shadow: 0 0 5px rgba(184, 153, 74, 0.3);
 }
 
 #move-count-excellent-text {
-    font-family: 'Microsoft JhengHei UI Light';
-    color: #6cb400;
+    font-family: 'Georgia', 'Times New Roman', serif;
+    color: #b8994a;
     font-size: 14px;
     padding: 5px;
     margin: 0px;
+    font-weight: 600;
+    text-shadow: 0 0 5px rgba(184, 153, 74, 0.3);
 }
 
 #move-count-good-text {
-    font-family: 'Microsoft JhengHei UI Light';
-    color: #758358;
+    font-family: 'Georgia', 'Times New Roman', serif;
+    color: #a08d6c;
     font-size: 14px;
     padding: 5px;
     margin: 0px;
+    font-weight: 600;
 }
 
 #move-count-inaccuracy-text {
-    font-family: 'Microsoft JhengHei UI Light';
-    color: #ffff00;
+    font-family: 'Georgia', 'Times New Roman', serif;
+    color: #e4cb7a;
     font-size: 14px;
     padding: 5px;
     margin: 0px;
+    font-weight: 600;
 }
 
 #move-count-mistake-text {
-    font-family: 'Microsoft JhengHei UI Light';
-    color: #ff9500;
+    font-family: 'Georgia', 'Times New Roman', serif;
+    color: #e09a48;
     font-size: 14px;
     padding: 5px;
     margin: 0px;
+    font-weight: 600;
 }
 
 #move-count-blunder-text {
-    font-family: 'Microsoft JhengHei UI Light';
-    color: #ff0000;
+    font-family: 'Georgia', 'Times New Roman', serif;
+    color: #e06060;
     font-size: 14px;
     padding: 5px;
     margin: 0px;
+    font-weight: 600;
+    text-shadow: 0 0 5px rgba(224, 96, 96, 0.3);
 }
 
+/* Classic control buttons */
 .switch-container {
     padding: 0px;
     margin: 0px;
@@ -312,151 +403,100 @@ p {
     justify-content: center;
     align-items: center;
     width: 15%;
-    height: 100%;
-    border-radius: 10px;
+    height: 80%;
+    border-radius: 4px;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+    border: 1px solid rgba(100, 80, 60, 0.3);
+    background-color: rgba(60, 50, 40, 0.5);
 }
 
 .switch-container:hover {
-    background-color: #353535;
+    background-color: rgba(80, 70, 60, 0.7);
+    transform: translateY(-2px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.switch-container:active {
+    transform: translateY(1px);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 .switch-container img {
-    height: 75%;
+    height: 70%;
+    filter: sepia(20%) brightness(1.1);
 }
 
-.arrow-container-left {
+.arrow-container-left, .arrow-container-right {
     padding: 0px;
     margin: 0px;
     display: flex;
     justify-content: center;
     align-items: center;
     width: 20%;
-    height: 100%;
-    border-radius: 10px;
-}
-
-.arrow-container-left:hover {
-    background-color: #353535;
-}
-
-.arrow-container-left img {
     height: 80%;
+    border-radius: 4px;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+    border: 1px solid rgba(100, 80, 60, 0.3);
+    background-color: rgba(60, 50, 40, 0.5);
 }
 
-.arrow-container-right {
-    padding: 0px;
-    margin: 0px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 20%;
-    height: 100%;
-    border-radius: 10px;
+.arrow-container-left:hover, .arrow-container-right:hover {
+    background-color: rgba(80, 70, 60, 0.7);
+    transform: translateY(-2px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }
 
-.arrow-container-right:hover {
-    background-color: #353535;
+.arrow-container-left:active, .arrow-container-right:active {
+    transform: translateY(1px);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
-.arrow-container-right img {
-    height: 80%;
+.arrow-container-left img, .arrow-container-right img {
+    height: 70%;
+    filter: sepia(20%) brightness(1.1);
 }
 
+/* Classic chess board area with subtle wooden texture */
 .middlebar {
     position: relative;
     display: flex;
-    border: none;
+    border: 2px solid rgba(90, 70, 50, 0.4);
     box-sizing: border-box;
-    height: 95%;
+    height: 97%;
     width: 46%;
+    margin: 1.5% 0;
+    border-radius: 6px;
+    background-color: rgba(35, 30, 25, 0.9);
+    background-image: linear-gradient(45deg, rgba(60, 50, 40, 0.1) 25%, transparent 25%, 
+                      transparent 75%, rgba(60, 50, 40, 0.1) 75%, rgba(60, 50, 40, 0.1)), 
+                      linear-gradient(45deg, rgba(60, 50, 40, 0.1) 25%, transparent 25%, 
+                      transparent 75%, rgba(60, 50, 40, 0.1) 75%, rgba(60, 50, 40, 0.1));
+    background-size: 60px 60px;
+    background-position: 0 0, 30px 30px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4), inset 0 0 80px rgba(20, 15, 10, 0.4);
+    overflow: hidden;
 }
 
-.eval-bar-container {
-    width: 20px;
-    height: 95%; /* Adjust the height based on your preference */
-    background-color: #bebebe;
-    transition: height 0.3s ease;
-    padding: 0px;
-    margin: 0px;
-    margin-bottom: 5px;
-}
-
-.eval-bar {
-    width: 20px;
-    height: 50%; /* Adjust the height based on your preference */
-    padding: 0px;
-    margin: 0px;
-    background-color: #161616;
-    transition: height 0.3s ease;
-}
-
-.eval-bar-tip {
-    position: absolute;
-    top: 47.5%;
-    transform: translateX(-30%);
-    padding: 5px;
-    background-color: #ffffff;
-    color: #000;
-    border-radius: 5px;
-    display: none;
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
-}
-
-footer {
-    margin-right: 30px;
-    font-family: 'Lucida Console';
-    font-size: 20px;
-    text-align: right;
-}
+ 
 
 #board {
-    position: absolute;
-    top: 0;
-    left: 0;
     width: 100%;
-    margin: 0px;
+    height: 100%;
+    max-height: 100vh;
+    aspect-ratio: 1 / 1;
+    margin-top: 60px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
 }
 
-.movebar {
-    display: flex;
-    font-size: 20px;
-    font-family: 'Microsoft JhengHei UI Light';
-    font-weight: 100;
-    height: 35px;
+/* Classic evaluation bar */
+.eval-bar-container {
+    width: 5px;
+    height: 95%;
+    background-color: #d0c0a0;
+    transition: height 0.3s ease;
+    padding: 0px;
+    margin: 15px 0;
+    border-radius: 2px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(120, 100, 80, 0.5);
 }
-
-.move-num {
-    background-color: #333333;
-    width: 20%;
-    padding: 5px;
-    text-align: center;
-    border-right: 1px solid #555555;
-    color: #888888;
-}
-
-.move-container {
-    background-color: #232323;
-    width: 40%;
-    padding: 5px;
-    padding-left: 10px;
-}
-
-.move-container:hover {
-    background-color: #777777;
-}
-
-.move-container-clicked {
-    background-color: #ffffff;
-    width: 40%;
-    padding: 5px;
-    padding-left: 10px;
-    color: black;
-}
-
-.move-container-null {
-    background-color: #232323;
-    width: 40%;
-    padding-left: 16px;
-    color: rgb(0, 0, 0, 0);
-}
-
